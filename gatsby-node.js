@@ -19,23 +19,32 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       gender: String
       isOut: Boolean
     }
+
+    type Fields {
+      slug: String!
+    }
+
     interface Media @nodeInterface {
       id: ID!
       title: String
       tags: [TagsJson]!
       characters: [Character!]
+      fields: Fields
     }
-    type Book implements Node & Media{
+    type Book implements Node & Media {
         tags: [TagsJson]! @link(by: "id")
         characters: [Character!]
+        fields: Fields
     }
     type Movie implements Node & Media {
         tags: [TagsJson]! @link(by: "id")
         characters: [Character!]
+        fields: Fields
     }
     type TagsJson implements Node {
         id: ID!
         isSpoiler: Boolean!
+        
     }`,
   ]
   createTypes(typeDefs)
@@ -125,8 +134,8 @@ exports.createPages = async context => {
   await createMovies(context)
 }
 
-function getBasePath(path) {
-  switch (path) {
+function getBasePath(type) {
+  switch (type) {
     case "Movie":
       return "movies"
     case "Book":
@@ -139,16 +148,15 @@ function getBasePath(path) {
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `Book` || node.internal.type === `Movie`) {
-    const fileNode = getNode(node.parent)
+    const basePath = getBasePath(node.internal.type)
     const slug = createFilePath({
       node,
       getNode,
-      basePath: getBasePath(node.internal.type),
     })
     createNodeField({
       node,
       name: `slug`,
-      value: slug,
+      value: `${basePath}${slug}`,
     })
   }
 }

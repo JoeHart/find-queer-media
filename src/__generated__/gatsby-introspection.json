@@ -54,6 +54,16 @@
                   "ofType": null
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "fields",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "FieldsFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
               }
             ],
             "type": {
@@ -516,21 +526,21 @@
                 "defaultValue": null
               },
               {
-                "name": "childMoviesJson",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "MoviesJsonFilterInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
                 "name": "childTagsJson",
                 "description": "",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "TagsJsonFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "childMoviesJson",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "MoviesJsonFilterInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -1246,6 +1256,16 @@
                 "defaultValue": null
               },
               {
+                "name": "fields",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "FieldsFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "title",
                 "description": "",
                 "type": {
@@ -1476,16 +1496,6 @@
                 "defaultValue": null
               },
               {
-                "name": "fields",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "BookFieldsFilterInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
                 "name": "averageRating",
                 "description": "",
                 "type": {
@@ -1651,6 +1661,16 @@
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "CharacterFilterListInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "fields",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "FieldsFilterInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -1901,16 +1921,6 @@
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "StringQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "fields",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "MovieFieldsFilterInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2196,26 +2206,6 @@
                 "defaultValue": null
               },
               {
-                "name": "oclc",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StringQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "isbn",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StringQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
                 "name": "googleBooksId",
                 "description": "",
                 "type": {
@@ -2247,6 +2237,26 @@
               },
               {
                 "name": "title",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StringQueryOperatorInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "oclc",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StringQueryOperatorInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "isbn",
                 "description": "",
                 "type": {
                   "kind": "INPUT_OBJECT",
@@ -3543,6 +3553,27 @@
         "possibleTypes": null
       },
       {
+        "kind": "INPUT_OBJECT",
+        "name": "FieldsFilterInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "slug",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "INTERFACE",
         "name": "Media",
         "description": null,
@@ -3611,6 +3642,18 @@
                   "ofType": null
                 }
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Fields",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -4093,6 +4136,33 @@
         "possibleTypes": null
       },
       {
+        "kind": "OBJECT",
+        "name": "Fields",
+        "description": null,
+        "fields": [
+          {
+            "name": "slug",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "INPUT_OBJECT",
         "name": "MediaFilterInput",
         "description": null,
@@ -4134,6 +4204,16 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "CharacterFilterListInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fields",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FieldsFilterInput",
               "ofType": null
             },
             "defaultValue": null
@@ -4480,6 +4560,12 @@
           },
           {
             "name": "characters___isOut",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fields___slug",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -6226,26 +6312,6 @@
             "defaultValue": null
           },
           {
-            "name": "oclc",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "isbn",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "googleBooksId",
             "description": "",
             "type": {
@@ -6277,6 +6343,26 @@
           },
           {
             "name": "title",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "oclc",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "isbn",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -7269,24 +7355,24 @@
             "deprecationReason": null
           },
           {
-            "name": "childMoviesJson",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "MoviesJson",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "childTagsJson",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
               "name": "TagsJson",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childMoviesJson",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "MoviesJson",
               "ofType": null
             },
             "isDeprecated": false,
@@ -9866,30 +9952,6 @@
             "deprecationReason": null
           },
           {
-            "name": "oclc",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isbn",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "googleBooksId",
             "description": null,
             "args": [],
@@ -9935,6 +9997,30 @@
           },
           {
             "name": "title",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "oclc",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isbn",
             "description": null,
             "args": [],
             "type": {
@@ -10425,21 +10511,21 @@
             "defaultValue": null
           },
           {
-            "name": "childMoviesJson",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "MoviesJsonFilterInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "childTagsJson",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "TagsJsonFilterInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "childMoviesJson",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "MoviesJsonFilterInput",
               "ofType": null
             },
             "defaultValue": null
@@ -11773,6 +11859,246 @@
             "deprecationReason": null
           },
           {
+            "name": "childTagsJson___id",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___isSpoiler",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___label",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___id",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___parent___id",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___parent___children",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___children",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___children___id",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___children___children",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___content",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___contentDigest",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___description",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___fieldOwners",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___ignoreType",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___mediaType",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___owner",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___parent___internal___type",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___id",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___parent___id",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___parent___children",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___children",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___children___id",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___children___children",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___content",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___contentDigest",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___description",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___fieldOwners",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___ignoreType",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___mediaType",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___owner",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___children___internal___type",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___content",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___contentDigest",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___description",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___fieldOwners",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___ignoreType",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___mediaType",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___owner",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childTagsJson___internal___type",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "childMoviesJson___id",
             "description": null,
             "isDeprecated": false,
@@ -12055,246 +12381,6 @@
             "deprecationReason": null
           },
           {
-            "name": "childTagsJson___id",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___isSpoiler",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___label",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___id",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___parent___id",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___parent___children",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___children",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___children___id",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___children___children",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___content",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___contentDigest",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___description",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___fieldOwners",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___ignoreType",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___mediaType",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___owner",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___parent___internal___type",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___id",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___parent___id",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___parent___children",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___children",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___children___id",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___children___children",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___content",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___contentDigest",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___description",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___fieldOwners",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___ignoreType",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___mediaType",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___owner",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___children___internal___type",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___content",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___contentDigest",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___description",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___fieldOwners",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___ignoreType",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___mediaType",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___owner",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childTagsJson___internal___type",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "childBooksJson___id",
             "description": null,
             "isDeprecated": false,
@@ -12523,18 +12609,6 @@
             "deprecationReason": null
           },
           {
-            "name": "childBooksJson___oclc",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "childBooksJson___isbn",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "childBooksJson___googleBooksId",
             "description": null,
             "isDeprecated": false,
@@ -12584,6 +12658,18 @@
           },
           {
             "name": "childBooksJson___title",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childBooksJson___oclc",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "childBooksJson___isbn",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -16768,27 +16854,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "INPUT_OBJECT",
-        "name": "BookFieldsFilterInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "slug",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
         "name": "Book",
         "description": null,
@@ -16829,6 +16894,18 @@
                   "ofType": null
                 }
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Fields",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -17163,18 +17240,6 @@
             "deprecationReason": null
           },
           {
-            "name": "fields",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BookFields",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "averageRating",
             "description": null,
             "args": [],
@@ -17495,29 +17560,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "OBJECT",
-        "name": "BookFields",
-        "description": null,
-        "fields": [
-          {
-            "name": "slug",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "INPUT_OBJECT",
         "name": "BookFilterInput",
         "description": null,
@@ -17539,6 +17581,16 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "CharacterFilterListInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fields",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FieldsFilterInput",
               "ofType": null
             },
             "defaultValue": null
@@ -17769,16 +17821,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "fields",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "BookFieldsFilterInput",
               "ofType": null
             },
             "defaultValue": null
@@ -18198,6 +18240,12 @@
             "deprecationReason": null
           },
           {
+            "name": "fields___slug",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "title",
             "description": null,
             "isDeprecated": false,
@@ -18373,12 +18421,6 @@
           },
           {
             "name": "googleBooksId",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "fields___slug",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -19338,27 +19380,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "INPUT_OBJECT",
-        "name": "MovieFieldsFilterInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "slug",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
         "name": "Movie",
         "description": null,
@@ -19399,6 +19420,18 @@
                   "ofType": null
                 }
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Fields",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -19749,18 +19782,6 @@
             "deprecationReason": null
           },
           {
-            "name": "fields",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "MovieFields",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "id",
             "description": null,
             "args": [],
@@ -19881,29 +19902,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "OBJECT",
-        "name": "MovieFields",
-        "description": null,
-        "fields": [
-          {
-            "name": "slug",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "INPUT_OBJECT",
         "name": "MovieFilterInput",
         "description": null,
@@ -19925,6 +19923,16 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "CharacterFilterListInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "fields",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "FieldsFilterInput",
               "ofType": null
             },
             "defaultValue": null
@@ -20175,16 +20183,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "fields",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "MovieFieldsFilterInput",
               "ofType": null
             },
             "defaultValue": null
@@ -20564,6 +20562,12 @@
             "deprecationReason": null
           },
           {
+            "name": "fields___slug",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "title",
             "description": null,
             "isDeprecated": false,
@@ -20721,12 +20725,6 @@
           },
           {
             "name": "response",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "fields___slug",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -23110,18 +23108,6 @@
             "deprecationReason": null
           },
           {
-            "name": "oclc",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isbn",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "googleBooksId",
             "description": null,
             "isDeprecated": false,
@@ -23171,6 +23157,18 @@
           },
           {
             "name": "title",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "oclc",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isbn",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null

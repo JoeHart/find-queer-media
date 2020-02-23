@@ -50,6 +50,7 @@ directive @nodeInterface on INTERFACE
 type Book implements Node & Media {
   tags: [TagsJson]!
   characters: [Character!]
+  fields: Fields
   title: String
   authors: [String]
   publisher: String
@@ -89,7 +90,6 @@ type Book implements Node & Media {
   infoLink: String
   canonicalVolumeLink: String
   googleBooksId: String
-  fields: BookFields
   averageRating: Int
   ratingsCount: Int
   oclc: String
@@ -125,10 +125,6 @@ type BookEdge {
   next: Book
   node: Book!
   previous: Book
-}
-
-type BookFields {
-  slug: String
 }
 
 enum BookFieldsEnum {
@@ -179,6 +175,7 @@ enum BookFieldsEnum {
   characters___isSpoiler
   characters___gender
   characters___isOut
+  fields___slug
   title
   authors
   publisher
@@ -209,7 +206,6 @@ enum BookFieldsEnum {
   infoLink
   canonicalVolumeLink
   googleBooksId
-  fields___slug
   averageRating
   ratingsCount
   oclc
@@ -302,13 +298,10 @@ enum BookFieldsEnum {
   internal___type
 }
 
-input BookFieldsFilterInput {
-  slug: StringQueryOperatorInput
-}
-
 input BookFilterInput {
   tags: TagsJsonFilterListInput
   characters: CharacterFilterListInput
+  fields: FieldsFilterInput
   title: StringQueryOperatorInput
   authors: StringQueryOperatorInput
   publisher: StringQueryOperatorInput
@@ -332,7 +325,6 @@ input BookFilterInput {
   infoLink: StringQueryOperatorInput
   canonicalVolumeLink: StringQueryOperatorInput
   googleBooksId: StringQueryOperatorInput
-  fields: BookFieldsFilterInput
   averageRating: IntQueryOperatorInput
   ratingsCount: IntQueryOperatorInput
   oclc: StringQueryOperatorInput
@@ -401,12 +393,12 @@ type BooksJson implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
-  oclc: String
-  isbn: String
   googleBooksId: String
   tags: [String]
   characters: [BooksJsonCharacters]
   title: String
+  oclc: String
+  isbn: String
 }
 
 type BooksJsonCharacters {
@@ -531,8 +523,6 @@ enum BooksJsonFieldsEnum {
   internal___mediaType
   internal___owner
   internal___type
-  oclc
-  isbn
   googleBooksId
   tags
   characters
@@ -542,6 +532,8 @@ enum BooksJsonFieldsEnum {
   characters___gender
   characters___isOut
   title
+  oclc
+  isbn
 }
 
 input BooksJsonFilterInput {
@@ -549,12 +541,12 @@ input BooksJsonFilterInput {
   parent: NodeFilterInput
   children: NodeFilterListInput
   internal: InternalFilterInput
-  oclc: StringQueryOperatorInput
-  isbn: StringQueryOperatorInput
   googleBooksId: StringQueryOperatorInput
   tags: StringQueryOperatorInput
   characters: BooksJsonCharactersFilterListInput
   title: StringQueryOperatorInput
+  oclc: StringQueryOperatorInput
+  isbn: StringQueryOperatorInput
 }
 
 type BooksJsonGroupConnection {
@@ -967,6 +959,14 @@ input DuotoneGradient {
   opacity: Int
 }
 
+type Fields {
+  slug: String!
+}
+
+input FieldsFilterInput {
+  slug: StringQueryOperatorInput
+}
+
 type File implements Node {
   sourceInstanceName: String!
   absolutePath: String!
@@ -1121,8 +1121,8 @@ type File implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
-  childMoviesJson: MoviesJson
   childTagsJson: TagsJson
+  childMoviesJson: MoviesJson
   childBooksJson: BooksJson
 }
 
@@ -1353,6 +1353,46 @@ enum FileFieldsEnum {
   internal___mediaType
   internal___owner
   internal___type
+  childTagsJson___id
+  childTagsJson___isSpoiler
+  childTagsJson___label
+  childTagsJson___parent___id
+  childTagsJson___parent___parent___id
+  childTagsJson___parent___parent___children
+  childTagsJson___parent___children
+  childTagsJson___parent___children___id
+  childTagsJson___parent___children___children
+  childTagsJson___parent___internal___content
+  childTagsJson___parent___internal___contentDigest
+  childTagsJson___parent___internal___description
+  childTagsJson___parent___internal___fieldOwners
+  childTagsJson___parent___internal___ignoreType
+  childTagsJson___parent___internal___mediaType
+  childTagsJson___parent___internal___owner
+  childTagsJson___parent___internal___type
+  childTagsJson___children
+  childTagsJson___children___id
+  childTagsJson___children___parent___id
+  childTagsJson___children___parent___children
+  childTagsJson___children___children
+  childTagsJson___children___children___id
+  childTagsJson___children___children___children
+  childTagsJson___children___internal___content
+  childTagsJson___children___internal___contentDigest
+  childTagsJson___children___internal___description
+  childTagsJson___children___internal___fieldOwners
+  childTagsJson___children___internal___ignoreType
+  childTagsJson___children___internal___mediaType
+  childTagsJson___children___internal___owner
+  childTagsJson___children___internal___type
+  childTagsJson___internal___content
+  childTagsJson___internal___contentDigest
+  childTagsJson___internal___description
+  childTagsJson___internal___fieldOwners
+  childTagsJson___internal___ignoreType
+  childTagsJson___internal___mediaType
+  childTagsJson___internal___owner
+  childTagsJson___internal___type
   childMoviesJson___id
   childMoviesJson___parent___id
   childMoviesJson___parent___parent___id
@@ -1400,46 +1440,6 @@ enum FileFieldsEnum {
   childMoviesJson___characters___isSpoiler
   childMoviesJson___characters___gender
   childMoviesJson___characters___isOut
-  childTagsJson___id
-  childTagsJson___isSpoiler
-  childTagsJson___label
-  childTagsJson___parent___id
-  childTagsJson___parent___parent___id
-  childTagsJson___parent___parent___children
-  childTagsJson___parent___children
-  childTagsJson___parent___children___id
-  childTagsJson___parent___children___children
-  childTagsJson___parent___internal___content
-  childTagsJson___parent___internal___contentDigest
-  childTagsJson___parent___internal___description
-  childTagsJson___parent___internal___fieldOwners
-  childTagsJson___parent___internal___ignoreType
-  childTagsJson___parent___internal___mediaType
-  childTagsJson___parent___internal___owner
-  childTagsJson___parent___internal___type
-  childTagsJson___children
-  childTagsJson___children___id
-  childTagsJson___children___parent___id
-  childTagsJson___children___parent___children
-  childTagsJson___children___children
-  childTagsJson___children___children___id
-  childTagsJson___children___children___children
-  childTagsJson___children___internal___content
-  childTagsJson___children___internal___contentDigest
-  childTagsJson___children___internal___description
-  childTagsJson___children___internal___fieldOwners
-  childTagsJson___children___internal___ignoreType
-  childTagsJson___children___internal___mediaType
-  childTagsJson___children___internal___owner
-  childTagsJson___children___internal___type
-  childTagsJson___internal___content
-  childTagsJson___internal___contentDigest
-  childTagsJson___internal___description
-  childTagsJson___internal___fieldOwners
-  childTagsJson___internal___ignoreType
-  childTagsJson___internal___mediaType
-  childTagsJson___internal___owner
-  childTagsJson___internal___type
   childBooksJson___id
   childBooksJson___parent___id
   childBooksJson___parent___parent___id
@@ -1478,8 +1478,6 @@ enum FileFieldsEnum {
   childBooksJson___internal___mediaType
   childBooksJson___internal___owner
   childBooksJson___internal___type
-  childBooksJson___oclc
-  childBooksJson___isbn
   childBooksJson___googleBooksId
   childBooksJson___tags
   childBooksJson___characters
@@ -1489,6 +1487,8 @@ enum FileFieldsEnum {
   childBooksJson___characters___gender
   childBooksJson___characters___isOut
   childBooksJson___title
+  childBooksJson___oclc
+  childBooksJson___isbn
 }
 
 input FileFilterInput {
@@ -1531,8 +1531,8 @@ input FileFilterInput {
   parent: NodeFilterInput
   children: NodeFilterListInput
   internal: InternalFilterInput
-  childMoviesJson: MoviesJsonFilterInput
   childTagsJson: TagsJsonFilterInput
+  childMoviesJson: MoviesJsonFilterInput
   childBooksJson: BooksJsonFilterInput
 }
 
@@ -2016,6 +2016,7 @@ interface Media {
   title: String
   tags: [TagsJson]!
   characters: [Character!]
+  fields: Fields
 }
 
 type MediaConnection {
@@ -2083,6 +2084,7 @@ enum MediaFieldsEnum {
   characters___isSpoiler
   characters___gender
   characters___isOut
+  fields___slug
 }
 
 input MediaFilterInput {
@@ -2090,6 +2092,7 @@ input MediaFilterInput {
   title: StringQueryOperatorInput
   tags: TagsJsonFilterListInput
   characters: CharacterFilterListInput
+  fields: FieldsFilterInput
 }
 
 type MediaGroupConnection {
@@ -2109,6 +2112,7 @@ input MediaSortInput {
 type Movie implements Node & Media {
   tags: [TagsJson]!
   characters: [Character!]
+  fields: Fields
   title: String
   year(
     # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
@@ -2150,7 +2154,6 @@ type Movie implements Node & Media {
   production: String
   website: String
   response: String
-  fields: MovieFields
   id: ID!
   parent: Node
   children: [Node!]!
@@ -2170,10 +2173,6 @@ type MovieEdge {
   next: Movie
   node: Movie!
   previous: Movie
-}
-
-type MovieFields {
-  slug: String
 }
 
 enum MovieFieldsEnum {
@@ -2224,6 +2223,7 @@ enum MovieFieldsEnum {
   characters___isSpoiler
   characters___gender
   characters___isOut
+  fields___slug
   title
   year
   rated
@@ -2251,7 +2251,6 @@ enum MovieFieldsEnum {
   production
   website
   response
-  fields___slug
   id
   parent___id
   parent___parent___id
@@ -2340,13 +2339,10 @@ enum MovieFieldsEnum {
   internal___type
 }
 
-input MovieFieldsFilterInput {
-  slug: StringQueryOperatorInput
-}
-
 input MovieFilterInput {
   tags: TagsJsonFilterListInput
   characters: CharacterFilterListInput
+  fields: FieldsFilterInput
   title: StringQueryOperatorInput
   year: DateQueryOperatorInput
   rated: StringQueryOperatorInput
@@ -2372,7 +2368,6 @@ input MovieFilterInput {
   production: StringQueryOperatorInput
   website: StringQueryOperatorInput
   response: StringQueryOperatorInput
-  fields: MovieFieldsFilterInput
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
@@ -2626,21 +2621,21 @@ enum PotraceTurnPolicy {
 }
 
 type Query {
-  media(id: StringQueryOperatorInput, title: StringQueryOperatorInput, tags: TagsJsonFilterListInput, characters: CharacterFilterListInput): Media
+  media(id: StringQueryOperatorInput, title: StringQueryOperatorInput, tags: TagsJsonFilterListInput, characters: CharacterFilterListInput, fields: FieldsFilterInput): Media
   allMedia(filter: MediaFilterInput, sort: MediaSortInput, skip: Int, limit: Int): MediaConnection!
-  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childImageSharp: ImageSharpFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, childMoviesJson: MoviesJsonFilterInput, childTagsJson: TagsJsonFilterInput, childBooksJson: BooksJsonFilterInput): File
+  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childImageSharp: ImageSharpFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, childTagsJson: TagsJsonFilterInput, childMoviesJson: MoviesJsonFilterInput, childBooksJson: BooksJsonFilterInput): File
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, resolutions: ImageSharpResolutionsFilterInput, fluid: ImageSharpFluidFilterInput, sizes: ImageSharpSizesFilterInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
-  book(tags: TagsJsonFilterListInput, characters: CharacterFilterListInput, title: StringQueryOperatorInput, authors: StringQueryOperatorInput, publisher: StringQueryOperatorInput, publishedDate: DateQueryOperatorInput, description: StringQueryOperatorInput, industryIdentifiers: BookIndustryIdentifiersFilterListInput, readingModes: BookReadingModesFilterInput, pageCount: IntQueryOperatorInput, printedPageCount: IntQueryOperatorInput, dimensions: BookDimensionsFilterInput, printType: StringQueryOperatorInput, categories: StringQueryOperatorInput, maturityRating: StringQueryOperatorInput, allowAnonLogging: BooleanQueryOperatorInput, contentVersion: StringQueryOperatorInput, panelizationSummary: BookPanelizationSummaryFilterInput, comicsContent: BooleanQueryOperatorInput, imageLinks: BookImageLinksFilterInput, language: StringQueryOperatorInput, previewLink: StringQueryOperatorInput, infoLink: StringQueryOperatorInput, canonicalVolumeLink: StringQueryOperatorInput, googleBooksId: StringQueryOperatorInput, fields: BookFieldsFilterInput, averageRating: IntQueryOperatorInput, ratingsCount: IntQueryOperatorInput, oclc: StringQueryOperatorInput, isbn: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Book
+  book(tags: TagsJsonFilterListInput, characters: CharacterFilterListInput, fields: FieldsFilterInput, title: StringQueryOperatorInput, authors: StringQueryOperatorInput, publisher: StringQueryOperatorInput, publishedDate: DateQueryOperatorInput, description: StringQueryOperatorInput, industryIdentifiers: BookIndustryIdentifiersFilterListInput, readingModes: BookReadingModesFilterInput, pageCount: IntQueryOperatorInput, printedPageCount: IntQueryOperatorInput, dimensions: BookDimensionsFilterInput, printType: StringQueryOperatorInput, categories: StringQueryOperatorInput, maturityRating: StringQueryOperatorInput, allowAnonLogging: BooleanQueryOperatorInput, contentVersion: StringQueryOperatorInput, panelizationSummary: BookPanelizationSummaryFilterInput, comicsContent: BooleanQueryOperatorInput, imageLinks: BookImageLinksFilterInput, language: StringQueryOperatorInput, previewLink: StringQueryOperatorInput, infoLink: StringQueryOperatorInput, canonicalVolumeLink: StringQueryOperatorInput, googleBooksId: StringQueryOperatorInput, averageRating: IntQueryOperatorInput, ratingsCount: IntQueryOperatorInput, oclc: StringQueryOperatorInput, isbn: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Book
   allBook(filter: BookFilterInput, sort: BookSortInput, skip: Int, limit: Int): BookConnection!
-  movie(tags: TagsJsonFilterListInput, characters: CharacterFilterListInput, title: StringQueryOperatorInput, year: DateQueryOperatorInput, rated: StringQueryOperatorInput, released: StringQueryOperatorInput, runtime: StringQueryOperatorInput, genre: StringQueryOperatorInput, director: StringQueryOperatorInput, writer: StringQueryOperatorInput, actors: StringQueryOperatorInput, plot: StringQueryOperatorInput, language: StringQueryOperatorInput, country: StringQueryOperatorInput, awards: StringQueryOperatorInput, poster: StringQueryOperatorInput, ratings: MovieRatingsFilterListInput, metascore: StringQueryOperatorInput, imdbRating: StringQueryOperatorInput, imdbVotes: StringQueryOperatorInput, imdbID: StringQueryOperatorInput, type: StringQueryOperatorInput, DVD: StringQueryOperatorInput, boxOffice: StringQueryOperatorInput, production: StringQueryOperatorInput, website: StringQueryOperatorInput, response: StringQueryOperatorInput, fields: MovieFieldsFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Movie
+  movie(tags: TagsJsonFilterListInput, characters: CharacterFilterListInput, fields: FieldsFilterInput, title: StringQueryOperatorInput, year: DateQueryOperatorInput, rated: StringQueryOperatorInput, released: StringQueryOperatorInput, runtime: StringQueryOperatorInput, genre: StringQueryOperatorInput, director: StringQueryOperatorInput, writer: StringQueryOperatorInput, actors: StringQueryOperatorInput, plot: StringQueryOperatorInput, language: StringQueryOperatorInput, country: StringQueryOperatorInput, awards: StringQueryOperatorInput, poster: StringQueryOperatorInput, ratings: MovieRatingsFilterListInput, metascore: StringQueryOperatorInput, imdbRating: StringQueryOperatorInput, imdbVotes: StringQueryOperatorInput, imdbID: StringQueryOperatorInput, type: StringQueryOperatorInput, DVD: StringQueryOperatorInput, boxOffice: StringQueryOperatorInput, production: StringQueryOperatorInput, website: StringQueryOperatorInput, response: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Movie
   allMovie(filter: MovieFilterInput, sort: MovieSortInput, skip: Int, limit: Int): MovieConnection!
   tagsJson(id: StringQueryOperatorInput, isSpoiler: BooleanQueryOperatorInput, label: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): TagsJson
   allTagsJson(filter: TagsJsonFilterInput, sort: TagsJsonSortInput, skip: Int, limit: Int): TagsJsonConnection!
-  booksJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, oclc: StringQueryOperatorInput, isbn: StringQueryOperatorInput, googleBooksId: StringQueryOperatorInput, tags: StringQueryOperatorInput, characters: BooksJsonCharactersFilterListInput, title: StringQueryOperatorInput): BooksJson
+  booksJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, googleBooksId: StringQueryOperatorInput, tags: StringQueryOperatorInput, characters: BooksJsonCharactersFilterListInput, title: StringQueryOperatorInput, oclc: StringQueryOperatorInput, isbn: StringQueryOperatorInput): BooksJson
   allBooksJson(filter: BooksJsonFilterInput, sort: BooksJsonSortInput, skip: Int, limit: Int): BooksJsonConnection!
   moviesJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, title: StringQueryOperatorInput, imdbID: StringQueryOperatorInput, tags: StringQueryOperatorInput, characters: MoviesJsonCharactersFilterListInput): MoviesJson
   allMoviesJson(filter: MoviesJsonFilterInput, sort: MoviesJsonSortInput, skip: Int, limit: Int): MoviesJsonConnection!
