@@ -393,12 +393,12 @@ type BooksJson implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
+  oclc: String
+  isbn: String
   googleBooksId: String
   tags: [String]
   characters: [BooksJsonCharacters]
   title: String
-  oclc: String
-  isbn: String
 }
 
 type BooksJsonCharacters {
@@ -523,6 +523,8 @@ enum BooksJsonFieldsEnum {
   internal___mediaType
   internal___owner
   internal___type
+  oclc
+  isbn
   googleBooksId
   tags
   characters
@@ -532,8 +534,6 @@ enum BooksJsonFieldsEnum {
   characters___gender
   characters___isOut
   title
-  oclc
-  isbn
 }
 
 input BooksJsonFilterInput {
@@ -541,12 +541,12 @@ input BooksJsonFilterInput {
   parent: NodeFilterInput
   children: NodeFilterListInput
   internal: InternalFilterInput
+  oclc: StringQueryOperatorInput
+  isbn: StringQueryOperatorInput
   googleBooksId: StringQueryOperatorInput
   tags: StringQueryOperatorInput
   characters: BooksJsonCharactersFilterListInput
   title: StringQueryOperatorInput
-  oclc: StringQueryOperatorInput
-  isbn: StringQueryOperatorInput
 }
 
 type BooksJsonGroupConnection {
@@ -1478,6 +1478,8 @@ enum FileFieldsEnum {
   childBooksJson___internal___mediaType
   childBooksJson___internal___owner
   childBooksJson___internal___type
+  childBooksJson___oclc
+  childBooksJson___isbn
   childBooksJson___googleBooksId
   childBooksJson___tags
   childBooksJson___characters
@@ -1487,8 +1489,6 @@ enum FileFieldsEnum {
   childBooksJson___characters___gender
   childBooksJson___characters___isOut
   childBooksJson___title
-  childBooksJson___oclc
-  childBooksJson___isbn
 }
 
 input FileFilterInput {
@@ -2635,11 +2635,11 @@ type Query {
   allMovie(filter: MovieFilterInput, sort: MovieSortInput, skip: Int, limit: Int): MovieConnection!
   tagsJson(id: StringQueryOperatorInput, isSpoiler: BooleanQueryOperatorInput, label: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): TagsJson
   allTagsJson(filter: TagsJsonFilterInput, sort: TagsJsonSortInput, skip: Int, limit: Int): TagsJsonConnection!
-  booksJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, googleBooksId: StringQueryOperatorInput, tags: StringQueryOperatorInput, characters: BooksJsonCharactersFilterListInput, title: StringQueryOperatorInput, oclc: StringQueryOperatorInput, isbn: StringQueryOperatorInput): BooksJson
+  booksJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, oclc: StringQueryOperatorInput, isbn: StringQueryOperatorInput, googleBooksId: StringQueryOperatorInput, tags: StringQueryOperatorInput, characters: BooksJsonCharactersFilterListInput, title: StringQueryOperatorInput): BooksJson
   allBooksJson(filter: BooksJsonFilterInput, sort: BooksJsonSortInput, skip: Int, limit: Int): BooksJsonConnection!
   moviesJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, title: StringQueryOperatorInput, imdbID: StringQueryOperatorInput, tags: StringQueryOperatorInput, characters: MoviesJsonCharactersFilterListInput): MoviesJson
   allMoviesJson(filter: MoviesJsonFilterInput, sort: MoviesJsonSortInput, skip: Int, limit: Int): MoviesJsonConnection!
-  site(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, buildTime: DateQueryOperatorInput): Site
+  site(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, siteMetadata: SiteSiteMetadataFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, buildTime: DateQueryOperatorInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   sitePlugin(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, resolve: StringQueryOperatorInput, name: StringQueryOperatorInput, version: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, nodeAPIs: StringQueryOperatorInput, browserAPIs: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, pluginFilepath: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput): SitePlugin
   allSitePlugin(filter: SitePluginFilterInput, sort: SitePluginSortInput, skip: Int, limit: Int): SitePluginConnection!
@@ -2653,8 +2653,6 @@ type Site implements Node {
   children: [Node!]!
   internal: Internal!
   siteMetadata: SiteSiteMetadata
-  port: Int
-  host: String
   polyfill: Boolean
   pathPrefix: String
   buildTime(
@@ -2781,8 +2779,6 @@ enum SiteFieldsEnum {
   siteMetadata___title
   siteMetadata___description
   siteMetadata___author
-  port
-  host
   polyfill
   pathPrefix
   buildTime
@@ -2794,8 +2790,6 @@ input SiteFilterInput {
   children: NodeFilterListInput
   internal: InternalFilterInput
   siteMetadata: SiteSiteMetadataFilterInput
-  port: IntQueryOperatorInput
-  host: StringQueryOperatorInput
   polyfill: BooleanQueryOperatorInput
   pathPrefix: StringQueryOperatorInput
   buildTime: DateQueryOperatorInput
