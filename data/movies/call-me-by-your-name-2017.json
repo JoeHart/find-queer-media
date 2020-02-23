@@ -1,5 +1,21 @@
 {
   "title": "Call Me By Your Name",
   "imdbID": "tt5726616",
-  "tags": ["gay", "gay-main-character"]
+  "tags": ["gay", "gay-main-character"],
+  "characters": [
+    {
+      "type": "main",
+      "sexuality": "gay",
+      "isSpoiler": false,
+      "gender": "cis-male",
+      "isOut": false
+    },
+    {
+      "type": "main",
+      "sexuality": "gay",
+      "gender": "cis-male",
+      "isOut": false,
+      "isSpoiler": false
+    }
+  ]
 }

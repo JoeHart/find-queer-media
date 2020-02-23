@@ -1,21 +1,20 @@
 {
-  "title": "Brokeback Mountain",
-  "imdbID": "tt0388795",
-  "tags": ["gay", "gay-main-character"],
+  "googleBooksId": "-W0HyAEACAAJ",
+  "tags": ["gay", "non-sexual", "school", "monogamous", "romantic"],
   "characters": [
     {
       "type": "main",
       "sexuality": "gay",
       "isSpoiler": false,
       "gender": "cis-male",
-      "isOut": false
+      "isOut": true
     },
     {
       "type": "main",
-      "sexuality": "gay",
+      "sexuality": "bisexual",
       "gender": "cis-male",
       "isOut": false,
-      "isSpoiler": false
+      "isSpoiler": true
     }
   ]
 }

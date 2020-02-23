@@ -1,5 +1,21 @@
 {
   "title": "My Brother's Husband: Volume 1",
   "googleBooksId": "nVtevgAACAAJ",
-  "tags": ["gay", "straight-main-character"]
+  "tags": ["gay", "straight-main-character"],
+  "characters": [
+    {
+      "type": "main",
+      "sexuality": "straight",
+      "isSpoiler": false,
+      "gender": "cis-male",
+      "isOut": null
+    },
+    {
+      "type": "main",
+      "sexuality": "gay",
+      "gender": "cis-male",
+      "isOut": true,
+      "isSpoiler": false
+    }
+  ]
 }

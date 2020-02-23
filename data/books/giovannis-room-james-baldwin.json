@@ -1,7 +1,14 @@
 {
-  "title": "Giovanni's Room",
   "oclc": "44800071",
   "isbn": "9780141032948",
   "googleBooksId": "qYqHPwAACAAJ",
-  "tags": ["gay", "gay-main-character"]
+  "tags": ["gay", "gay-main-character"],
+  "characters": [
+    {
+      "type": "main",
+      "sexuality": "gay",
+      "isSpoiler": false,
+      "gender": "cis-male"
+    }
+  ]
 }
