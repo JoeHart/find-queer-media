@@ -12,7 +12,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     `type BooksJson implements Node {
         tags: [TagsJson]! @link(by: "slug")
     }`,
-
+    `type MoviesJson implements Node {
+        tags: [TagsJson]! @link(by: "slug")
+    }`,
     `type TagsJson implements Node {
         isSpoiler: Boolean!
     }`,
