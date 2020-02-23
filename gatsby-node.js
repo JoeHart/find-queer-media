@@ -82,7 +82,7 @@ const createBooks = async ({ graphql, actions }) => {
   result.data.allBook.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/book.js`),
+      component: path.resolve(`./src/templates/book.tsx`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.

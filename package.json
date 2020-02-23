@@ -11,6 +11,8 @@
     "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sharp": "^2.4.3",
+    "gatsby-plugin-typegen": "^1.1.1",
+    "gatsby-plugin-typescript": "^2.1.27",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-json": "^2.2.26",
     "gatsby-transformer-sharp": "^2.3.13",
@@ -20,6 +22,9 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@types/node": "^13.7.4",
+    "@types/react": "^16.9.22",
+    "@types/react-dom": "^16.9.5",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -27,9 +32,12 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "npm build:types && gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
