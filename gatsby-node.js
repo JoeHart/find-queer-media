@@ -11,13 +11,30 @@ const path = require(`path`)
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions
   const typeDefs = [
-    `type BooksJson implements Node {
-        tags: [TagsJson]! @link(by: "slug")
-    }`,
-    `type MoviesJson implements Node {
-        tags: [TagsJson]! @link(by: "slug")
-    }`,
-    `type TagsJson implements Node {
+    `
+    type Character {
+      type: String!
+      sexuality: String,
+      isSpoiler: Boolean!
+      gender: String
+      isOut: Boolean
+    }
+    interface Media @nodeInterface {
+      id: ID!
+      title: String
+      tags: [TagsJson]!
+      characters: [Character!]
+    }
+    type Book implements Node & Media{
+        tags: [TagsJson]! @link(by: "id")
+        characters: [Character!]
+    }
+    type Movie implements Node & Media {
+        tags: [TagsJson]! @link(by: "id")
+        characters: [Character!]
+    }
+    type TagsJson implements Node {
+        id: ID!
         isSpoiler: Boolean!
     }`,
   ]
@@ -31,6 +48,14 @@ exports.createResolvers = ({ createResolvers }) => {
         type: "Boolean!",
         resolve(source, args, context, info) {
           return !!source.isSpoiler
+        },
+      },
+    },
+    Query: {
+      allMedia: {
+        type: ["Media"],
+        resolve(source, args, context, info) {
+          return context.nodeModel.getAllNodes({ type: "Media" })
         },
       },
     },

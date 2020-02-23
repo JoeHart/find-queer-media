@@ -16,7 +16,11 @@ export const query = graphql`
   query($slug: String!) {
     book(fields: { slug: { eq: $slug } }) {
       id
-      tags
+      tags {
+        id
+        label
+        isSpoiler
+      }
       title
       categories
       authors
