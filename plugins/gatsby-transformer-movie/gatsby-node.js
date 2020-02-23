@@ -56,7 +56,6 @@ async function onCreateNode(
     ...node,
     id: node.imdbID,
     children: [],
-    parent: null,
     internal: {
       contentDigest: createContentDigest(data),
       type: "Movie",

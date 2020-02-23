@@ -65,7 +65,6 @@ async function onCreateNode(
     ...node,
     id: node.googleBooksId,
     children: [],
-    parent: null,
     internal: {
       contentDigest: createContentDigest(bookData),
       type: "Book",
