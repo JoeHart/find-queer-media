@@ -372,12 +372,12 @@ export type BooksJson = Node & {
   readonly parent: Maybe<Node>,
   readonly children: ReadonlyArray<Node>,
   readonly internal: Internal,
+  readonly oclc: Maybe<Scalars['String']>,
+  readonly isbn: Maybe<Scalars['String']>,
   readonly googleBooksId: Maybe<Scalars['String']>,
   readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>,
   readonly characters: Maybe<ReadonlyArray<Maybe<BooksJsonCharacters>>>,
   readonly title: Maybe<Scalars['String']>,
-  readonly oclc: Maybe<Scalars['String']>,
-  readonly isbn: Maybe<Scalars['String']>,
 };
 
 export type BooksJsonCharacters = {
@@ -514,6 +514,8 @@ export enum BooksJsonFieldsEnum {
   internal___mediaType = 'internal.mediaType',
   internal___owner = 'internal.owner',
   internal___type = 'internal.type',
+  oclc = 'oclc',
+  isbn = 'isbn',
   googleBooksId = 'googleBooksId',
   tags = 'tags',
   characters = 'characters',
@@ -522,9 +524,7 @@ export enum BooksJsonFieldsEnum {
   characters___isSpoiler = 'characters.isSpoiler',
   characters___gender = 'characters.gender',
   characters___isOut = 'characters.isOut',
-  title = 'title',
-  oclc = 'oclc',
-  isbn = 'isbn'
+  title = 'title'
 }
 
 export type BooksJsonFilterInput = {
@@ -532,12 +532,12 @@ export type BooksJsonFilterInput = {
   readonly parent: Maybe<NodeFilterInput>,
   readonly children: Maybe<NodeFilterListInput>,
   readonly internal: Maybe<InternalFilterInput>,
+  readonly oclc: Maybe<StringQueryOperatorInput>,
+  readonly isbn: Maybe<StringQueryOperatorInput>,
   readonly googleBooksId: Maybe<StringQueryOperatorInput>,
   readonly tags: Maybe<StringQueryOperatorInput>,
   readonly characters: Maybe<BooksJsonCharactersFilterListInput>,
   readonly title: Maybe<StringQueryOperatorInput>,
-  readonly oclc: Maybe<StringQueryOperatorInput>,
-  readonly isbn: Maybe<StringQueryOperatorInput>,
 };
 
 export type BooksJsonGroupConnection = {
@@ -1377,6 +1377,8 @@ export enum FileFieldsEnum {
   childBooksJson___internal___mediaType = 'childBooksJson.internal.mediaType',
   childBooksJson___internal___owner = 'childBooksJson.internal.owner',
   childBooksJson___internal___type = 'childBooksJson.internal.type',
+  childBooksJson___oclc = 'childBooksJson.oclc',
+  childBooksJson___isbn = 'childBooksJson.isbn',
   childBooksJson___googleBooksId = 'childBooksJson.googleBooksId',
   childBooksJson___tags = 'childBooksJson.tags',
   childBooksJson___characters = 'childBooksJson.characters',
@@ -1385,9 +1387,7 @@ export enum FileFieldsEnum {
   childBooksJson___characters___isSpoiler = 'childBooksJson.characters.isSpoiler',
   childBooksJson___characters___gender = 'childBooksJson.characters.gender',
   childBooksJson___characters___isOut = 'childBooksJson.characters.isOut',
-  childBooksJson___title = 'childBooksJson.title',
-  childBooksJson___oclc = 'childBooksJson.oclc',
-  childBooksJson___isbn = 'childBooksJson.isbn'
+  childBooksJson___title = 'childBooksJson.title'
 }
 
 export type FileFilterInput = {
@@ -2911,12 +2911,12 @@ export type Query_booksJsonArgs = {
   parent: Maybe<NodeFilterInput>,
   children: Maybe<NodeFilterListInput>,
   internal: Maybe<InternalFilterInput>,
+  oclc: Maybe<StringQueryOperatorInput>,
+  isbn: Maybe<StringQueryOperatorInput>,
   googleBooksId: Maybe<StringQueryOperatorInput>,
   tags: Maybe<StringQueryOperatorInput>,
   characters: Maybe<BooksJsonCharactersFilterListInput>,
-  title: Maybe<StringQueryOperatorInput>,
-  oclc: Maybe<StringQueryOperatorInput>,
-  isbn: Maybe<StringQueryOperatorInput>
+  title: Maybe<StringQueryOperatorInput>
 };
 
 
@@ -3942,21 +3942,6 @@ export type LayoutSiteTitleQueryVariables = {};
 
 export type LayoutSiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-export type SEODataQueryVariables = {};
-
-
-export type SEODataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-export type bookQueryVariables = {
-  slug: Scalars['String']
-};
-
-
-export type bookQuery = { readonly book: Maybe<(
-    Pick<Book, 'id' | 'title' | 'categories' | 'authors' | 'language' | 'comicsContent' | 'description' | 'isbn' | 'publishedDate'>
-    & { readonly tags: ReadonlyArray<Maybe<Pick<TagsJson, 'id' | 'label' | 'isSpoiler'>>>, readonly characters: Maybe<ReadonlyArray<Pick<Character, 'type' | 'sexuality' | 'isSpoiler' | 'gender' | 'isOut'>>> }
-  )> };
-
 export type homePageQueryVariables = {};
 
 
@@ -3970,13 +3955,13 @@ export type homePageQuery = { readonly allMedia: { readonly edges: ReadonlyArray
         & { readonly tags: ReadonlyArray<Maybe<Pick<TagsJson, 'id' | 'label' | 'isSpoiler'>>>, readonly fields: Maybe<Pick<Fields, 'slug'>> }
       ) }> } };
 
-export type movieQueryVariables = {
+export type bookQueryVariables = {
   slug: Scalars['String']
 };
 
 
-export type movieQuery = { readonly movie: Maybe<(
-    Pick<Movie, 'id' | 'title' | 'plot'>
+export type bookQuery = { readonly book: Maybe<(
+    Pick<Book, 'id' | 'title' | 'categories' | 'authors' | 'language' | 'comicsContent' | 'description' | 'isbn' | 'publishedDate'>
     & { readonly tags: ReadonlyArray<Maybe<Pick<TagsJson, 'id' | 'label' | 'isSpoiler'>>>, readonly characters: Maybe<ReadonlyArray<Pick<Character, 'type' | 'sexuality' | 'isSpoiler' | 'gender' | 'isOut'>>> }
   )> };
 
@@ -4027,3 +4012,23 @@ export type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSi
 export type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 export type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+export type movieQueryVariables = {
+  slug: Scalars['String']
+};
+
+
+export type movieQuery = { readonly movie: Maybe<(
+    Pick<Movie, 'id' | 'title' | 'plot'>
+    & { readonly tags: ReadonlyArray<Maybe<Pick<TagsJson, 'id' | 'label' | 'isSpoiler'>>>, readonly characters: Maybe<ReadonlyArray<Pick<Character, 'type' | 'sexuality' | 'isSpoiler' | 'gender' | 'isOut'>>> }
+  )> };
+
+export type SEODataQueryVariables = {};
+
+
+export type SEODataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
+export type PagesQueryQueryVariables = {};
+
+
+export type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'id' | 'path'>> } };
