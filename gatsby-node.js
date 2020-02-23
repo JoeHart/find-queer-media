@@ -110,7 +110,7 @@ const createMovies = async ({ graphql, actions }) => {
   result.data.allMovie.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/movie.js`),
+      component: path.resolve(`./src/templates/movie.tsx`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.

@@ -1,7 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
+// @ts-ignore
 import Layout from "../components/layout"
-export default ({ data }) => {
+import { movieQuery } from "../__generated__/gatsby-types"
+
+export default ({ data }: { data: movieQuery }) => {
   const post = data.movie
   return (
     <Layout>
@@ -13,7 +16,7 @@ export default ({ data }) => {
   )
 }
 export const query = graphql`
-  query($slug: String!) {
+  query movie($slug: String!) {
     movie(fields: { slug: { eq: $slug } }) {
       id
       tags {

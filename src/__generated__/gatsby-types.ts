@@ -952,8 +952,8 @@ export type File = Node & {
   readonly parent: Maybe<Node>,
   readonly children: ReadonlyArray<Node>,
   readonly internal: Internal,
-  readonly childTagsJson: Maybe<TagsJson>,
   readonly childMoviesJson: Maybe<MoviesJson>,
+  readonly childTagsJson: Maybe<TagsJson>,
   readonly childBooksJson: Maybe<BooksJson>,
 };
 
@@ -1252,46 +1252,6 @@ export enum FileFieldsEnum {
   internal___mediaType = 'internal.mediaType',
   internal___owner = 'internal.owner',
   internal___type = 'internal.type',
-  childTagsJson___id = 'childTagsJson.id',
-  childTagsJson___isSpoiler = 'childTagsJson.isSpoiler',
-  childTagsJson___label = 'childTagsJson.label',
-  childTagsJson___parent___id = 'childTagsJson.parent.id',
-  childTagsJson___parent___parent___id = 'childTagsJson.parent.parent.id',
-  childTagsJson___parent___parent___children = 'childTagsJson.parent.parent.children',
-  childTagsJson___parent___children = 'childTagsJson.parent.children',
-  childTagsJson___parent___children___id = 'childTagsJson.parent.children.id',
-  childTagsJson___parent___children___children = 'childTagsJson.parent.children.children',
-  childTagsJson___parent___internal___content = 'childTagsJson.parent.internal.content',
-  childTagsJson___parent___internal___contentDigest = 'childTagsJson.parent.internal.contentDigest',
-  childTagsJson___parent___internal___description = 'childTagsJson.parent.internal.description',
-  childTagsJson___parent___internal___fieldOwners = 'childTagsJson.parent.internal.fieldOwners',
-  childTagsJson___parent___internal___ignoreType = 'childTagsJson.parent.internal.ignoreType',
-  childTagsJson___parent___internal___mediaType = 'childTagsJson.parent.internal.mediaType',
-  childTagsJson___parent___internal___owner = 'childTagsJson.parent.internal.owner',
-  childTagsJson___parent___internal___type = 'childTagsJson.parent.internal.type',
-  childTagsJson___children = 'childTagsJson.children',
-  childTagsJson___children___id = 'childTagsJson.children.id',
-  childTagsJson___children___parent___id = 'childTagsJson.children.parent.id',
-  childTagsJson___children___parent___children = 'childTagsJson.children.parent.children',
-  childTagsJson___children___children = 'childTagsJson.children.children',
-  childTagsJson___children___children___id = 'childTagsJson.children.children.id',
-  childTagsJson___children___children___children = 'childTagsJson.children.children.children',
-  childTagsJson___children___internal___content = 'childTagsJson.children.internal.content',
-  childTagsJson___children___internal___contentDigest = 'childTagsJson.children.internal.contentDigest',
-  childTagsJson___children___internal___description = 'childTagsJson.children.internal.description',
-  childTagsJson___children___internal___fieldOwners = 'childTagsJson.children.internal.fieldOwners',
-  childTagsJson___children___internal___ignoreType = 'childTagsJson.children.internal.ignoreType',
-  childTagsJson___children___internal___mediaType = 'childTagsJson.children.internal.mediaType',
-  childTagsJson___children___internal___owner = 'childTagsJson.children.internal.owner',
-  childTagsJson___children___internal___type = 'childTagsJson.children.internal.type',
-  childTagsJson___internal___content = 'childTagsJson.internal.content',
-  childTagsJson___internal___contentDigest = 'childTagsJson.internal.contentDigest',
-  childTagsJson___internal___description = 'childTagsJson.internal.description',
-  childTagsJson___internal___fieldOwners = 'childTagsJson.internal.fieldOwners',
-  childTagsJson___internal___ignoreType = 'childTagsJson.internal.ignoreType',
-  childTagsJson___internal___mediaType = 'childTagsJson.internal.mediaType',
-  childTagsJson___internal___owner = 'childTagsJson.internal.owner',
-  childTagsJson___internal___type = 'childTagsJson.internal.type',
   childMoviesJson___id = 'childMoviesJson.id',
   childMoviesJson___parent___id = 'childMoviesJson.parent.id',
   childMoviesJson___parent___parent___id = 'childMoviesJson.parent.parent.id',
@@ -1339,6 +1299,46 @@ export enum FileFieldsEnum {
   childMoviesJson___characters___isSpoiler = 'childMoviesJson.characters.isSpoiler',
   childMoviesJson___characters___gender = 'childMoviesJson.characters.gender',
   childMoviesJson___characters___isOut = 'childMoviesJson.characters.isOut',
+  childTagsJson___id = 'childTagsJson.id',
+  childTagsJson___isSpoiler = 'childTagsJson.isSpoiler',
+  childTagsJson___label = 'childTagsJson.label',
+  childTagsJson___parent___id = 'childTagsJson.parent.id',
+  childTagsJson___parent___parent___id = 'childTagsJson.parent.parent.id',
+  childTagsJson___parent___parent___children = 'childTagsJson.parent.parent.children',
+  childTagsJson___parent___children = 'childTagsJson.parent.children',
+  childTagsJson___parent___children___id = 'childTagsJson.parent.children.id',
+  childTagsJson___parent___children___children = 'childTagsJson.parent.children.children',
+  childTagsJson___parent___internal___content = 'childTagsJson.parent.internal.content',
+  childTagsJson___parent___internal___contentDigest = 'childTagsJson.parent.internal.contentDigest',
+  childTagsJson___parent___internal___description = 'childTagsJson.parent.internal.description',
+  childTagsJson___parent___internal___fieldOwners = 'childTagsJson.parent.internal.fieldOwners',
+  childTagsJson___parent___internal___ignoreType = 'childTagsJson.parent.internal.ignoreType',
+  childTagsJson___parent___internal___mediaType = 'childTagsJson.parent.internal.mediaType',
+  childTagsJson___parent___internal___owner = 'childTagsJson.parent.internal.owner',
+  childTagsJson___parent___internal___type = 'childTagsJson.parent.internal.type',
+  childTagsJson___children = 'childTagsJson.children',
+  childTagsJson___children___id = 'childTagsJson.children.id',
+  childTagsJson___children___parent___id = 'childTagsJson.children.parent.id',
+  childTagsJson___children___parent___children = 'childTagsJson.children.parent.children',
+  childTagsJson___children___children = 'childTagsJson.children.children',
+  childTagsJson___children___children___id = 'childTagsJson.children.children.id',
+  childTagsJson___children___children___children = 'childTagsJson.children.children.children',
+  childTagsJson___children___internal___content = 'childTagsJson.children.internal.content',
+  childTagsJson___children___internal___contentDigest = 'childTagsJson.children.internal.contentDigest',
+  childTagsJson___children___internal___description = 'childTagsJson.children.internal.description',
+  childTagsJson___children___internal___fieldOwners = 'childTagsJson.children.internal.fieldOwners',
+  childTagsJson___children___internal___ignoreType = 'childTagsJson.children.internal.ignoreType',
+  childTagsJson___children___internal___mediaType = 'childTagsJson.children.internal.mediaType',
+  childTagsJson___children___internal___owner = 'childTagsJson.children.internal.owner',
+  childTagsJson___children___internal___type = 'childTagsJson.children.internal.type',
+  childTagsJson___internal___content = 'childTagsJson.internal.content',
+  childTagsJson___internal___contentDigest = 'childTagsJson.internal.contentDigest',
+  childTagsJson___internal___description = 'childTagsJson.internal.description',
+  childTagsJson___internal___fieldOwners = 'childTagsJson.internal.fieldOwners',
+  childTagsJson___internal___ignoreType = 'childTagsJson.internal.ignoreType',
+  childTagsJson___internal___mediaType = 'childTagsJson.internal.mediaType',
+  childTagsJson___internal___owner = 'childTagsJson.internal.owner',
+  childTagsJson___internal___type = 'childTagsJson.internal.type',
   childBooksJson___id = 'childBooksJson.id',
   childBooksJson___parent___id = 'childBooksJson.parent.id',
   childBooksJson___parent___parent___id = 'childBooksJson.parent.parent.id',
@@ -1430,8 +1430,8 @@ export type FileFilterInput = {
   readonly parent: Maybe<NodeFilterInput>,
   readonly children: Maybe<NodeFilterListInput>,
   readonly internal: Maybe<InternalFilterInput>,
-  readonly childTagsJson: Maybe<TagsJsonFilterInput>,
   readonly childMoviesJson: Maybe<MoviesJsonFilterInput>,
+  readonly childTagsJson: Maybe<TagsJsonFilterInput>,
   readonly childBooksJson: Maybe<BooksJsonFilterInput>,
 };
 
@@ -2717,8 +2717,8 @@ export type Query_fileArgs = {
   parent: Maybe<NodeFilterInput>,
   children: Maybe<NodeFilterListInput>,
   internal: Maybe<InternalFilterInput>,
-  childTagsJson: Maybe<TagsJsonFilterInput>,
   childMoviesJson: Maybe<MoviesJsonFilterInput>,
+  childTagsJson: Maybe<TagsJsonFilterInput>,
   childBooksJson: Maybe<BooksJsonFilterInput>
 };
 
@@ -3376,6 +3376,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___name = 'pluginCreator.name',
   pluginCreator___version = 'pluginCreator.version',
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_introspection_json = 'pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_introspection_json',
+  pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql = 'pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_schema_graphql',
   pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql = 'pluginCreator.pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_graphql',
   pluginCreator___pluginOptions___name = 'pluginCreator.pluginOptions.name',
   pluginCreator___pluginOptions___path = 'pluginCreator.pluginOptions.path',
@@ -3575,6 +3576,7 @@ export enum SitePluginFieldsEnum {
   name = 'name',
   version = 'version',
   pluginOptions___emitSchema___src___generated___gatsby_introspection_json = 'pluginOptions.emitSchema.src___generated___gatsby_introspection_json',
+  pluginOptions___emitSchema___src___generated___gatsby_schema_graphql = 'pluginOptions.emitSchema.src___generated___gatsby_schema_graphql',
   pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql = 'pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_graphql',
   pluginOptions___name = 'pluginOptions.name',
   pluginOptions___path = 'pluginOptions.path',
@@ -3725,10 +3727,12 @@ export type SitePluginPluginOptionsEmitPluginDocumentsFilterInput = {
 
 export type SitePluginPluginOptionsEmitSchema = {
   readonly src___generated___gatsby_introspection_json: Maybe<Scalars['Boolean']>,
+  readonly src___generated___gatsby_schema_graphql: Maybe<Scalars['Boolean']>,
 };
 
 export type SitePluginPluginOptionsEmitSchemaFilterInput = {
   readonly src___generated___gatsby_introspection_json: Maybe<BooleanQueryOperatorInput>,
+  readonly src___generated___gatsby_schema_graphql: Maybe<BooleanQueryOperatorInput>,
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -3937,38 +3941,38 @@ export type TagsJsonSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>,
 };
 
+export type LayoutSiteTitleQueryVariables = {};
+
+
+export type LayoutSiteTitleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
 export type Unnamed_1_QueryVariables = {};
 
 
-export type Unnamed_1_Query = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
-
-export type SiteTitleQueryQueryVariables = {};
-
-
-export type SiteTitleQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 export type Unnamed_2_QueryVariables = {};
 
 
-export type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+export type Unnamed_2_Query = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
 
-export type usersjoehartworkspaceqmdbsrctemplatesmovieJs3124245272QueryVariables = {
+export type bookQueryVariables = {
   slug: Scalars['String']
 };
 
 
-export type usersjoehartworkspaceqmdbsrctemplatesmovieJs3124245272Query = { readonly movie: Maybe<(
-    Pick<Movie, 'id' | 'title' | 'plot'>
+export type bookQuery = { readonly book: Maybe<(
+    Pick<Book, 'id' | 'title' | 'categories' | 'authors' | 'language' | 'comicsContent' | 'description' | 'isbn' | 'publishedDate'>
     & { readonly tags: ReadonlyArray<Maybe<Pick<TagsJson, 'id' | 'label' | 'isSpoiler'>>>, readonly characters: Maybe<ReadonlyArray<Pick<Character, 'type' | 'sexuality' | 'isSpoiler' | 'gender' | 'isOut'>>> }
   )> };
 
-export type bookQueryQueryVariables = {
+export type movieQueryVariables = {
   slug: Scalars['String']
 };
 
 
-export type bookQueryQuery = { readonly book: Maybe<(
-    Pick<Book, 'id' | 'title' | 'categories' | 'authors' | 'language' | 'comicsContent' | 'description' | 'isbn' | 'publishedDate'>
+export type movieQuery = { readonly movie: Maybe<(
+    Pick<Movie, 'id' | 'title' | 'plot'>
     & { readonly tags: ReadonlyArray<Maybe<Pick<TagsJson, 'id' | 'label' | 'isSpoiler'>>>, readonly characters: Maybe<ReadonlyArray<Pick<Character, 'type' | 'sexuality' | 'isSpoiler' | 'gender' | 'isOut'>>> }
   )> };
 

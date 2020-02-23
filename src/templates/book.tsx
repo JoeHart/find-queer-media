@@ -2,8 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 // @ts-ignore
 import Layout from "../components/layout"
-import { bookQueryQuery } from "../__generated__/gatsby-types"
-export default ({ data }: { data: bookQueryQuery }) => {
+import { bookQuery } from "../__generated__/gatsby-types"
+export default ({ data }: { data: bookQuery }) => {
   const post = data.book
   return (
     <Layout>
@@ -15,7 +15,7 @@ export default ({ data }: { data: bookQueryQuery }) => {
   )
 }
 export const query = graphql`
-  query bookQuery($slug: String!) {
+  query book($slug: String!) {
     book(fields: { slug: { eq: $slug } }) {
       id
       tags {
