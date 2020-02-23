@@ -38,32 +38,41 @@ function toCamel(o) {
   return newO
 }
 
+async function getBookData(node, apiOptions) {
+  if (node.googleBooksId != null) {
+    const apiUrl = `https://www.googleapis.com/books/v1/volumes/${node.googleBooksId}?key${apiOptions}`
+    const response = await fetch(apiUrl)
+    const data = await response.json()
+    return data.volumeInfo
+  }
+
+  return null
+}
+
 async function onCreateNode(
   { node, createContentDigest, actions },
   configOptions
 ) {
-  if (node.internal.type !== `MoviesJson`) {
+  if (node.internal.type !== `BooksJson`) {
     return
   }
+  const { createNode } = actions
 
   const apiOptions = queryString.stringify(configOptions)
-  const apiUrl = `https://www.omdbapi.com/?${apiOptions}&i=${node.imdbID}`
-  const { createNode } = actions
-  const response = await fetch(apiUrl)
-  const data = await response.json()
-  const movieNode = {
-    ...toCamel(data),
+  const bookData = await getBookData(node, apiOptions)
+  const bookNode = {
+    ...bookData,
     ...node,
-    id: node.imdbID,
+    id: node.googleBooksId,
     children: [],
     parent: null,
     internal: {
-      contentDigest: createContentDigest(data),
-      type: "Movie",
+      contentDigest: createContentDigest(bookData),
+      type: "Book",
     },
   }
 
-  createNode(movieNode)
+  createNode(bookNode)
 }
 
 exports.onCreateNode = onCreateNode

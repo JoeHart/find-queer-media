@@ -44,5 +44,11 @@ module.exports = {
         apiKey: process.env.OMDB_API_KEY,
       },
     },
+    {
+      resolve: "gatsby-transformer-book",
+      options: {
+        key: process.env.GOOGLE_BOOKS_API_KEY,
+      },
+    },
   ],
 }
