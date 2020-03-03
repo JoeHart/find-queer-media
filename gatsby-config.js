@@ -63,5 +63,12 @@ module.exports = {
         key: process.env.GOOGLE_BOOKS_API_KEY,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Montserrat`],
+        display: "swap",
+      },
+    },
   ],
 }
