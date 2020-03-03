@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `🌈 Find Queer Media`,
+    title: `Find Queer Media`,
     description: `The curated home of Queer media, find your next LGBTQ+ store here.`,
     author: `@joehart`,
   },
@@ -35,13 +35,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `find-queer-media`,
+        short_name: `queer`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/rainbow.png`, // This path is relative to the root of the site.
       },
     },
     "gatsby-transformer-json",

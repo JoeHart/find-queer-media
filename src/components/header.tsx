@@ -29,7 +29,7 @@ const Header = ({ siteTitle }: Props) => (
   <HeaderContainer>
     <HeaderSection>
       <SiteTitle>
-        <SiteTitleLink to="/">{siteTitle}</SiteTitleLink>
+        <SiteTitleLink to="/">🌈 {siteTitle}</SiteTitleLink>
       </SiteTitle>
     </HeaderSection>
   </HeaderContainer>
