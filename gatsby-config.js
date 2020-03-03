@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Find Queer Media`,
+    title: `🌈 Find Queer Media`,
     description: `The curated home of Queer media, find your next LGBTQ+ store here.`,
     author: `@joehart`,
   },
