@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Joe Hart <joehart42@outlook.com>",
   "dependencies": {
+    "@reach/menu-button": "^0.8.5",
     "@types/styled-components": "^5.0.1",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
@@ -18,6 +19,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-json": "^2.2.26",
     "gatsby-transformer-sharp": "^2.3.13",
+    "ionicons": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

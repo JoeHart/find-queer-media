@@ -2,7 +2,7 @@ import React from "react"
 import Button from "./button"
 
 import styled from "styled-components"
-
+import Dropdown from "./Dropdown"
 const Container = styled.section`
   font-size: 32px;
   font-weight: 700;
@@ -24,6 +24,8 @@ const Content = styled.div`
 
 const Text = styled.span`
   padding: 12px;
+  overflow-wrap: none;
+  white-space: nowrap;
 `
 
 const HeroSearch = () => {
@@ -32,12 +34,16 @@ const HeroSearch = () => {
     <Container>
       <Content>
         <Text>I want a </Text>
-        <select id="mediaType" name="mediaType">
-          <option value="story">Story</option>
-          <option value="movie">Movie</option>
-          <option value="book">Book</option>
-          <option value="tv-show">TV Show</option>
-        </select>
+        <Dropdown
+          options={[
+            { id: "story", value: "Story" },
+            { id: "movie", value: "Movie" },
+            { id: "book", value: "Book" },
+            { id: "tv-show", value: "TV Show" },
+          ]}
+          onSelect={option => console.log(option)}
+          initialOption="story"
+        />
         <Text>about a </Text>
         <select id="characterType" name="characterType">
           <option value="queer">Queer</option>
