@@ -4,6 +4,8 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { homePageQuery } from "../__generated__/gatsby-types"
+import HeroSearch from "../components/heroSearch"
+
 type Props = {
   data: homePageQuery
 }
@@ -11,9 +13,7 @@ type Props = {
 const IndexPage = ({ data }: Props) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Find Queer Media</h1>
-    <p>Welcome to the index of queer media.</p>
-    <p>Now go build something great.</p>
+    <HeroSearch />
     <ul>
       {data.allMedia.edges.map(edge => {
         return (
